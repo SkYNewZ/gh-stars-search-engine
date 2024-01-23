@@ -1,0 +1,20 @@
+version: 2
+
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/"
+    assignees: [ "SkYNewZ" ]
+    groups:
+      go:
+        dependency-type: production
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    assignees: [ "SkYNewZ" ]
+    groups:
+      gha:
+        dependency-type: production
+    schedule:
+      interval: "weekly"

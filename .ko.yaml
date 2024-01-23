@@ -1,0 +1,10 @@
+builds:
+  - env:
+      - CGO_ENABLED=0
+    flags:
+      - -trimpath
+      - -mod=readonly
+      - -tags=netgo,osusergo,static
+    ldflags:
+      - -s -w
+      - -extldflags "-static"

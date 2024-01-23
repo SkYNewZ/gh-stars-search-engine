@@ -1,0 +1,97 @@
+run:
+  timeout: 5m
+
+linters:
+  enable-all: true
+  disable:
+    - bodyclose
+    - cyclop
+    - depguard
+    - dupl
+    - exhaustruct
+    - forcetypeassert
+    - funlen
+    - gci
+    - gochecknoglobals
+    - gocognit
+    - godox
+    - gomnd
+    - ireturn
+    - lll
+    - maintidx
+    - nlreturn
+    - scopelint
+    - sloglint
+    - tagliatelle
+    - varnamelen
+    - wsl
+
+    # deprecated
+    - deadcode
+    - exhaustivestruct
+    - golint
+    - ifshort
+    - interfacer
+    - maligned
+    - nosnakecase
+    - paralleltest
+    - scopelint
+    - structcheck
+    - testpackage
+    - varcheck
+
+linters-settings:
+  forbidigo:
+    # Forbid the following identifiers (list of regexp).
+    forbid:
+      - ^(fmt\\.Print(|f|ln)|print|println)$
+      - ^panic.*$
+
+  goimports:
+    # Group imports by 3rd party and local
+    local-prefixes: github.com/SkYNewZ,github.com/blevesearch/bleve/v2
+
+  govet:
+    # Enable all analyzers.
+    # Default: false
+    enable-all: true
+    # Disable analyzers by name.
+    # Run `go tool vet help` to see all analyzers.
+    # Default: []
+    disable:
+      - fieldalignment # too strict
+
+  tenv:
+    # The option `all` will run against whole test files (`_test.go`) regardless of method/function signatures.
+    # Otherwise, only methods that take `*testing.T`, `*testing.B`, and `testing.TB` as arguments are checked.
+    # Default: false
+    all: true
+
+  sloglint:
+    # Enforce using attributes only (incompatible with kv-only).
+    # Default: false
+    attr-only: true
+    # Enforce a single key naming convention.
+    # Values: snake, kebab, camel, pascal
+    # Default: ""
+    key-naming-case: snake
+
+issues:
+  # Maximum count of issues with the same text.
+  # Set to 0 to disable.
+  # Default: 3
+  max-same-issues: 50
+
+  exclude-rules:
+    - path: "_test\\.go"
+      linters:
+        - bodyclose
+        - dupl
+        - funlen
+        - goconst
+        - gosec
+        - noctx
+        - wrapcheck
+        - containedctx
+        - govet
+

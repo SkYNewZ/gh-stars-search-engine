@@ -1,0 +1,12 @@
+# See documentation at https://github.com/go-simpler/sloggen/blob/main/.slog.example.yml
+pkg: slogx
+
+imports:
+  - time
+  - net/http
+
+attrs:
+  - err: error
+  - duration: time.Duration
+  - request: "*http.Request"
+  - component: string
