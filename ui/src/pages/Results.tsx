@@ -16,7 +16,7 @@ const Results = () => {
 
   useEffect(() => {
     if (query && page) {
-      fetch(`http://localhost:8080/search?q=${query}&from=${from}&size=${SIZE}`)
+      fetch(`/search?q=${query}&from=${from}&size=${SIZE}`)
         .then((response) => response.json())
         .then((result) => setResult(result));
     } else {
@@ -27,6 +27,19 @@ const Results = () => {
   const handlePagination = (type: "previous" | "next"): void => {
     const newPage = type === "previous" ? Number(page) - 1 : Number(page) + 1;
     setSearchParams({ q: query!, p: String(newPage) });
+  };
+
+  const roundTook = (took: number): string => {
+    if (took < 1000 * 1000) {
+      return "less than 1ms";
+    }
+
+    if (took < 1000 * 1000 * 1000) {
+      return "" + Math.round(took / (1000*1000)) + "ms";
+    }
+
+    const roundMs = Math.round(took / (1000 * 1000));
+    return "" + roundMs / 1000 + "s";
   };
 
   return (
@@ -85,7 +98,7 @@ const Results = () => {
                 <span className="font-medium">{result.total_hits}</span> results
                 (
                 <span className="font-medium">
-                  {(result.took / 1000).toFixed(1)}
+                  {roundTook(result.took)}
                 </span>{" "}
                 seconds)
               </p>
