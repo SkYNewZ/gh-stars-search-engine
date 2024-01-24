@@ -1,0 +1,41 @@
+---
+version: 3
+
+vars:
+  UI_DIRECTORY: ui
+
+tasks:
+  ui:deps:
+    desc: Install UI dependencies
+    dir: "{{ .UI_DIRECTORY }}"
+    cmd: |
+      docker run --rm --name yarn \
+      -v $(pwd):/app \
+      -w /app \
+      node:lts-alpine \
+      yarn install --frozen-lockfile --non-interactive --no-progress --production=false
+    sources:
+      - package.json
+      - yarn.lock
+
+  ui:build:
+    desc: Build UI
+    dir: "{{ .UI_DIRECTORY }}"
+    deps: [ ui:deps ]
+    cmd: |
+      docker run --rm --name yarn \
+      -v $(pwd):/app \
+      -w /app \
+      node:lts-alpine \
+      yarn build --mode production
+    sources:
+      - src/**/*
+      - .eslintrc.cjs
+      - index.html
+      - postcss.config.js
+      - tailwind.config.ts
+      - tsconfig.json
+      - tsconfig.node.json
+      - vite.config.ts
+    generates:
+      - dist/**/*

@@ -3,11 +3,13 @@ package http
 import (
 	"context"
 	"encoding/json"
+	"io/fs"
 	"net/http"
 	"strconv"
 	"strings"
 
 	"github.com/SkYNewZ/gh-stars-search-engine/internal/slogx"
+	"github.com/SkYNewZ/gh-stars-search-engine/ui"
 )
 
 func (s *server) searchHandler(w http.ResponseWriter, r *http.Request) {
@@ -56,6 +58,17 @@ func (s *server) searchHandler(w http.ResponseWriter, r *http.Request) {
 
 func (s *server) healthHandler(w http.ResponseWriter, _ *http.Request) {
 	_, _ = w.Write([]byte("OK"))
+}
+
+func (s *server) uiHandler(w http.ResponseWriter, r *http.Request) {
+	_ui, err := fs.Sub(ui.Dist, "dist")
+	if err != nil {
+		s.logger.With(slogx.Err(err)).Error("failed to get sub filesystem")
+		http.Error(w, "cannot render ui", http.StatusInternalServerError)
+		return
+	}
+
+	http.FileServer(http.FS(_ui)).ServeHTTP(w, r)
 }
 
 // responseAsJSON writes the data as JSON to the response writer.
