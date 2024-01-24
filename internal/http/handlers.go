@@ -43,7 +43,6 @@ func (s *server) searchHandler(w http.ResponseWriter, r *http.Request) {
 	ctx, cancel := context.WithTimeout(r.Context(), s.searchTimeout)
 	defer cancel()
 
-	s.search.Search(ctx, q, engine.WithSearchFrom(from), engine.WithSearchSize(pageSize), engine.WithSearchFields(searchResponseFields...))
 	res, err := s.search.Search(
 		ctx,
 		q,

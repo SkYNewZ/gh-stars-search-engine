@@ -39,3 +39,14 @@ tasks:
       - vite.config.ts
     generates:
       - dist/**/*
+
+  ui:setup:
+    desc: Start yarn container
+    dir: "{{ .UI_DIRECTORY }}"
+    deps: [ ui:deps ]
+    cmd: |
+      docker run -it --rm --name yarn \
+      -v $(pwd):/app \
+      -w /app \
+      node:lts-alpine \
+      sh
