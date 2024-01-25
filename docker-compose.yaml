@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  ghs-engine:
+    container_name: ghs-engine
+    image: ghcr.io/skynewz/gh-stars-search-engine:latest
+    restart: unless-stopped
+    environment:
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      BELVE_STORAGE_PATH: /ko-app/ghs.belve
+    volumes:
+      - /opt/ghs-search/ghs.belve:/ko-app/ghs.belve
+    networks:
+      - proxy # Allow access from our Nginx Proxy Manager
+
+networks:
+  proxy:
+    external: true
+

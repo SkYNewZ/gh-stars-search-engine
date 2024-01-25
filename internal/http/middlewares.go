@@ -1,6 +1,7 @@
 package http
 
 import (
+	"log/slog"
 	"net/http"
 
 	"github.com/SkYNewZ/gh-stars-search-engine/internal/slogx"
@@ -36,7 +37,14 @@ func (s *server) allowedMethod(methods ...string) func(http.Handler) http.Handle
 
 func (s *server) loggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		s.logger.With(slogx.Request(r)).Debug("handling request")
+		s.logger.With(slog.Group(
+			"request",
+			slog.String("method", r.Method),
+			slog.String("url", r.URL.String()),
+			slog.String("remote_addr", r.RemoteAddr),
+			slog.String("user_agent", r.UserAgent()),
+			slog.String("referer", r.Referer()),
+		)).Debug("handling request")
 		next.ServeHTTP(w, r)
 	})
 }

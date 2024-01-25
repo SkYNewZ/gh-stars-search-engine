@@ -3,7 +3,6 @@ package http
 import (
 	"context"
 	"errors"
-	"fmt"
 	"log/slog"
 	"net/http"
 	"os"
@@ -28,17 +27,12 @@ func NewServer(logger *slog.Logger, search engine.Engine, searchTimeout time.Dur
 		logger = slog.Default()
 	}
 
-	port := "8080"
-	if v := os.Getenv("PORT"); v != "" {
-		port = v
-	}
-
 	srv := &server{
 		logger:        logger,
 		search:        search,
 		searchTimeout: searchTimeout,
 		httpServer: &http.Server{
-			Addr:         fmt.Sprintf(":%s", port),
+			Addr:         "", // will be set by Start
 			WriteTimeout: time.Second * 15,
 			ReadTimeout:  time.Second * 15,
 			IdleTimeout:  time.Second * 60,
@@ -49,6 +43,7 @@ func NewServer(logger *slog.Logger, search engine.Engine, searchTimeout time.Dur
 	router := http.NewServeMux()
 	router.HandleFunc("/search", srv.searchHandler)
 	router.HandleFunc("/health", srv.healthHandler)
+	router.HandleFunc("/", srv.uiHandler)
 
 	// setup default middlewares
 	r := srv.recoverMiddleware(router)
@@ -61,7 +56,13 @@ func NewServer(logger *slog.Logger, search engine.Engine, searchTimeout time.Dur
 
 // Start starts the HTTP server.
 func (s *server) Start() {
-	s.logger.Info("starting HTTP server")
+	port := "8080"
+	if v := os.Getenv("PORT"); v != "" {
+		port = v
+	}
+
+	s.logger.Info("starting HTTP server on port " + port)
+	s.httpServer.Addr = ":" + port
 	if err := s.httpServer.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 		s.logger.With(slogx.Err(err)).Error("failed to start HTTP server")
 	}

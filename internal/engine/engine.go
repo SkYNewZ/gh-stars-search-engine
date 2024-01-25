@@ -90,16 +90,39 @@ func (e *engine) BatchIndex(data []Indexable, batchSize int) error {
 	return flushBatch()
 }
 
+type SearchOption func(*bleve.SearchRequest)
+
+// WithSearchFields sets the fields to return in the search results.
+func WithSearchFields(fields ...string) SearchOption {
+	return func(r *bleve.SearchRequest) {
+		r.Fields = fields // return only the given fields
+	}
+}
+
+// WithSearchFrom sets the index of the first result to return.
+func WithSearchFrom(from int) SearchOption {
+	return func(r *bleve.SearchRequest) {
+		r.From = from // return results starting from the given index
+	}
+}
+
+// WithSearchSize sets the number of results to return.
+func WithSearchSize(size int) SearchOption {
+	return func(r *bleve.SearchRequest) {
+		r.Size = size // return the given number of results
+	}
+}
+
 // Search executes the given query and returns the results.
 // TODO: if we want to sort by starredAt, we need to index it as a date field and use sort https://blevesearch.com/docs/Sorting/
-func (e *engine) Search(ctx context.Context, q string, from int, size int, fields ...string) (*bleve.SearchResult, error) {
+func (e *engine) Search(ctx context.Context, q string, opts ...SearchOption) (*bleve.SearchResult, error) {
 	// https://blevesearch.com/docs/Query-String-Query/
 	query := bleve.NewQueryStringQuery(q)
 
 	search := bleve.NewSearchRequest(query)
-	search.Fields = fields // return only the given fields
-	search.From = from     // return results starting from the given index
-	search.Size = size     // return the given number of results
+	for _, opt := range opts {
+		opt(search)
+	}
 
 	results, err := e.index.SearchInContext(ctx, search)
 	if err != nil {

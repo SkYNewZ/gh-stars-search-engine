@@ -7,12 +7,11 @@
 package main
 
 import (
-	"log/slog"
-	"time"
-
 	"github.com/SkYNewZ/gh-stars-search-engine/internal/logging"
 	"github.com/SkYNewZ/gh-stars-search-engine/internal/slogx"
 	"github.com/robfig/cron/v3"
+	"log/slog"
+	"time"
 )
 
 // Injectors from wire.go:

@@ -14,5 +14,5 @@ type Engine interface {
 	BatchIndex(data []Indexable, batchSize int) error
 	// Search executes the given query and returns the results.
 	// TODO: if we want to sort by starredAt, we need to index it as a date field and use sort https://blevesearch.com/docs/Sorting/
-	Search(ctx context.Context, q string, from int, size int, fields ...string) (*bleve.SearchResult, error)
+	Search(ctx context.Context, q string, opts ...SearchOption) (*bleve.SearchResult, error)
 }
