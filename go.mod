@@ -5,9 +5,10 @@ go 1.21
 require (
 	github.com/blevesearch/bleve/v2 v2.3.10
 	github.com/google/wire v0.5.0
-	github.com/hasura/go-graphql-client v0.10.2
+	github.com/hasura/go-graphql-client v0.11.0
 	github.com/lmittmann/tint v1.0.4
 	github.com/motemen/go-loghttp v0.0.0-20231107055348-29ae44b293f4
+	github.com/motemen/go-nuts v0.0.0-20220604134737-2658d0104f31
 	github.com/robfig/cron/v3 v3.0.1
 	github.com/vburenin/ifacemaker v1.2.1
 	go-simpler.org/sloggen v0.2.0
@@ -39,7 +40,6 @@ require (
 	github.com/google/uuid v1.5.0 // indirect
 	github.com/jessevdk/go-flags v1.4.1-0.20181029123624-5de817a9aa20 // indirect
 	github.com/json-iterator/go v0.0.0-20171115153421-f7279a603ede // indirect
-	github.com/motemen/go-nuts v0.0.0-20220604134737-2658d0104f31 // indirect
 	github.com/mschoch/smat v0.2.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	go-simpler.org/errorsx v0.8.0 // indirect
