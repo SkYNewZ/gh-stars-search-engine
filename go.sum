@@ -158,8 +158,8 @@ github.com/graph-gophers/graphql-transport-ws v0.0.2 h1:DbmSkbIGzj8SvHei6n8Mh9eL
 github.com/graph-gophers/graphql-transport-ws v0.0.2/go.mod h1:5BVKvFzOd2BalVIBFfnfmHjpJi/MZ5rOj8G55mXvZ8g=
 github.com/hashicorp/golang-lru v0.5.0/go.mod h1:/m3WP610KZHVQ1SGc6re/UDhFvYD7pJ4Ao+sR/qLZy8=
 github.com/hashicorp/golang-lru v0.5.1/go.mod h1:/m3WP610KZHVQ1SGc6re/UDhFvYD7pJ4Ao+sR/qLZy8=
-github.com/hasura/go-graphql-client v0.10.2 h1:+/v5/gWYgWr0cpd0aCi4GNtiy8uAIxnkADHTKDM+boY=
-github.com/hasura/go-graphql-client v0.10.2/go.mod h1:eNNnmHAp6NgwKZ4xRbZEfywxr07qk34Y0QhbPsYIfhw=
+github.com/hasura/go-graphql-client v0.11.0 h1:EFEkpMZlkq5gLZj9oiI6TnHCOHV1oErxOroMc5qUHQI=
+github.com/hasura/go-graphql-client v0.11.0/go.mod h1:eNNnmHAp6NgwKZ4xRbZEfywxr07qk34Y0QhbPsYIfhw=
 github.com/ianlancetaylor/demangle v0.0.0-20181102032728-5e5cf60278f6/go.mod h1:aSSvb/t6k1mPoxDqO4vJh6VOCGPwU4O0C2/Eqndh1Sc=
 github.com/jessevdk/go-flags v1.4.1-0.20181029123624-5de817a9aa20 h1:dAOsPLhnBzIyxu0VvmnKjlNcIlgMK+erD6VRHDtweMI=
 github.com/jessevdk/go-flags v1.4.1-0.20181029123624-5de817a9aa20/go.mod h1:4FA24M0QyGHXBuZZK/XkWh8h0e1EYbRYJSGM75WSRxI=
