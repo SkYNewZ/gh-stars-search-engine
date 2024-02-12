@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/blevesearch/bleve/v2 v2.3.10
-	github.com/google/wire v0.5.0
+	github.com/google/wire v0.6.0
 	github.com/hasura/go-graphql-client v0.11.0
 	github.com/lmittmann/tint v1.0.4
 	github.com/motemen/go-loghttp v0.0.0-20231107055348-29ae44b293f4
@@ -12,7 +12,7 @@ require (
 	github.com/robfig/cron/v3 v3.0.1
 	github.com/vburenin/ifacemaker v1.2.1
 	go-simpler.org/sloggen v0.2.0
-	golang.org/x/oauth2 v0.16.0
+	golang.org/x/oauth2 v0.17.0
 )
 
 require (
@@ -36,7 +36,7 @@ require (
 	github.com/golang/geo v0.0.0-20210211234256-740aa86cb551 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
-	github.com/google/subcommands v1.0.1 // indirect
+	github.com/google/subcommands v1.2.0 // indirect
 	github.com/google/uuid v1.5.0 // indirect
 	github.com/jessevdk/go-flags v1.4.1-0.20181029123624-5de817a9aa20 // indirect
 	github.com/json-iterator/go v0.0.0-20171115153421-f7279a603ede // indirect
@@ -44,11 +44,10 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	go-simpler.org/errorsx v0.8.0 // indirect
 	go.etcd.io/bbolt v1.3.7 // indirect
-	golang.org/x/mod v0.6.0-dev.0.20220106191415-9b9b3d81d5e3 // indirect
-	golang.org/x/net v0.20.0 // indirect
-	golang.org/x/sys v0.16.0 // indirect
-	golang.org/x/tools v0.1.10 // indirect
-	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
+	golang.org/x/mod v0.14.0 // indirect
+	golang.org/x/net v0.21.0 // indirect
+	golang.org/x/sys v0.17.0 // indirect
+	golang.org/x/tools v0.17.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
