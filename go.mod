@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/blevesearch/bleve/v2 v2.3.10
 	github.com/google/wire v0.6.0
-	github.com/hasura/go-graphql-client v0.11.0
+	github.com/hasura/go-graphql-client v0.12.0
 	github.com/lmittmann/tint v1.0.4
 	github.com/motemen/go-loghttp v0.0.0-20231107055348-29ae44b293f4
 	github.com/motemen/go-nuts v0.0.0-20220604134737-2658d0104f31
@@ -37,7 +37,7 @@ require (
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/google/subcommands v1.2.0 // indirect
-	github.com/google/uuid v1.5.0 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/jessevdk/go-flags v1.4.1-0.20181029123624-5de817a9aa20 // indirect
 	github.com/json-iterator/go v0.0.0-20171115153421-f7279a603ede // indirect
 	github.com/mschoch/smat v0.2.0 // indirect
